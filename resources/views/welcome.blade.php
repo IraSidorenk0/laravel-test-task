@@ -11,25 +11,23 @@
     <body class="antialiased">
         @php
             $rowClass = 'row';
-            $columnClasses = ['col-md-4', 'col-md-4', 'col-md-4'];
-            $columnThreeClasses = ['col-md-3', 'col-md-3', 'col-md-3', 'col-md-3'];
+            $columnClasses = ['col-md-5 col-sm-12', 'col-md-3 col-sm-12', 'col-md-4 col-sm-12'];
+            $columnThreeClasses = ['col-md-3 col-sm-6', 'col-md-3 col-sm-6', 'col-md-3 col-sm-6', 'col-md-3 col-sm-6'];
         @endphp
         <div class="container">
             <header></header>
             <section>
                 <div class="stripe">
-                    <div class="{{ $rowClass }}">
-                        <div class="{{ $columnClasses[0] }}">
-                            <div class="d-flex align-items-center">
-                                <img class="komek-img"src="{{ asset('images/komek.png') }}" alt="">
-                                <div class="adress">
-                                    <h6>Казахстан</h6>
-                                    <p>Улица тестовая</p>
-                                </div>
+                    <div class="{{ $rowClass }} align-items-center">
+                        <div class="{{ $columnClasses[0] }} d-flex align-items-center">
+                            <img class="komek-img" src="{{ asset('images/komek.png') }}" alt="">
+                            <div class="adress ms-3">
+                                <h6>Казахстан</h6>
+                                <p>Улица тестовая</p>
                             </div>
                         </div>
                         <div class="{{ $columnClasses[1] }}">
-                            <select aria-label="Telephone numbers">
+                            <select aria-label="Telephone numbers" class="w-auto mx-auto">
                                 <option value="+77001234567">+7 700 123 45 67</option>
                                 <option value="+77012345678">+7 701 234 56 78</option>
                                 <option value="+77023456789">+7 702 345 67 89</option>
@@ -39,18 +37,17 @@
                                 <option value="+77067890123">+7 706 789 01 23</option>
                                 <option value="+77078901234">+7 707 890 12 34</option>
                             </select>
-                            <p>Касса</p>
+                            <p class="mt-2">Касса</p>
                         </div>
                         <div class="{{ $columnClasses[2] }}">
-                            <div class="links">
-                                <div>
+                            <div class="links h-100 d-flex justify-content-between align-items-center">
+                                <div class="d-flex gap-3">
                                     <img src="{{ asset('images/social-links/Facebook.svg') }}" alt="">
                                     <img src="{{ asset('images/social-links/Instagram.svg') }}" alt="">
                                     <img src="{{ asset('images/social-links/Youtube.svg') }}" alt="">
                                     <img src="{{ asset('images/social-links/Vkontakte (VK).svg') }}" alt="">
                                 </div>
                                 <button>Мне пришел билет</button>
-
                             </div>
                         </div>
                     </div>
@@ -94,121 +91,118 @@
                                 <div class="movie-grid">
                                     @php
                                         $filmsPath = public_path('images/films');
-                                        $films = [];
                                         
+                                        // Sample film data - in real app this would come from database
+                                        $filmData = [
+                                            
+                                            'image 4.png' => [
+                                                'name' => 'Праздники',
+                                                'badges' => ['экшн', 'триллер'],
+                                                'sessions' => [
+                                                    ['time' => '11:00', 'format' => '2D', 'price' => '1300 ₸', 'hall' => 'Зал 2'],
+                                                    ['time' => '15:00', 'format' => '3D', 'price' => '1600 ₸', 'hall' => 'Зал 1'],
+                                                    ['time' => '19:00', 'format' => '2D', 'price' => '1300 ₸', 'hall' => 'Зал 3']
+                                                ]
+                                            ],
+                                            'image 5.png' => [
+                                                'name' => 'Заложники',
+                                                'badges' => ['экшн', 'триллер'],
+                                                'sessions' => [
+                                                    ['time' => '12:00', 'format' => '2D', 'price' => '1233 ₸', 'hall' => 'Зал 3'],
+                                                    ['time' => '16:00', 'format' => '3D', 'price' => '1533 ₸', 'hall' => 'Зал 2'],
+                                                    ['time' => '20:00', 'format' => '2D', 'price' => '1233 ₸', 'hall' => 'Зал 1']
+                                                ]
+                                            ],
+                                            'image 6.png' => [
+                                                'name' => 'Мег 2: Бездна',
+                                                'badges' => ['2D', 'дубляж'],
+                                                'sessions' => [
+                                                    ['time' => '10:30', 'format' => '2D', 'price' => '1233 ₸', 'hall' => 'Зал 3'],
+                                                    ['time' => '14:30', 'format' => '2D', 'price' => '1233 ₸', 'hall' => 'Зал 1'],
+                                                    ['time' => '18:30', 'format' => '3D', 'price' => '1533 ₸', 'hall' => 'Зал 2']
+                                                ]
+                                            ],
+                                            'image 7.png' => [
+                                                'name' => 'Леди Баг и Супер-Кот: Пробуждение силы',
+                                                'badges' => ['анимауионное приключение'],
+                                                'sessions' => [
+                                                    ['time' => '11:30', 'format' => '2D', 'price' => '1100 ₸', 'hall' => 'Зал 1'],
+                                                    ['time' => '15:30', 'format' => '3D', 'price' => '1400 ₸', 'hall' => 'Зал 3'],
+                                                    ['time' => '19:30', 'format' => '2D', 'price' => '1100 ₸', 'hall' => 'Зал 2']
+                                                ]
+                                            ],
+                                            'No images' => [
+                                                'name' => 'Когда не загрузилась афиша',
+                                                'badges' => ['комедия'],
+                                                'sessions' => [
+                                                    ['time' => '15:35', 'format' => '2D', 'price' => '1233 ₸', 'hall' => 'Зал 3']
+                                                ]
+                                            ],
+                                            'image 10.png' => [
+                                                'name' => 'Руслан и Людмила. Больше, чем сказка',
+                                                'badges' => ['комедия'],
+                                                'sessions' => [
+                                                    ['time' => '10:00', 'format' => '2D', 'price' => '1200 ₸', 'hall' => 'Зал 1'],
+                                                    ['time' => '13:30', 'format' => '3D', 'price' => '1500 ₸', 'hall' => 'Зал 2'],
+                                                    ['time' => '17:00', 'format' => '2D', 'price' => '1200 ₸', 'hall' => 'Зал 3'],
+                                                    ['time' => '20:30', 'format' => '2D', 'price' => '2000 ₸', 'hall' => 'Зал 1']
+                                                ]
+                                            ]
+                                        ];
+                                        
+                                        // Get existing image files
+                                        $existingImages = [];
                                         if (is_dir($filmsPath)) {
                                             $filmFiles = glob($filmsPath . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
-                                            
-                                            // Sample film data - in real app this would come from database
-                                            $filmData = [
-                                                'image 10.png' => [
-                                                    'name' => 'Праздники',
-                                                    'badges' => ['комедия'],
-                                                    'sessions' => [
-                                                        ['time' => '10:00', 'format' => '2D', 'price' => '1200 ₸', 'hall' => 'Зал 1'],
-                                                        ['time' => '13:30', 'format' => '3D', 'price' => '1500 ₸', 'hall' => 'Зал 2'],
-                                                        ['time' => '17:00', 'format' => '2D', 'price' => '1200 ₸', 'hall' => 'Зал 3'],
-                                                        ['time' => '20:30', 'format' => 'IMAX', 'price' => '2000 ₸', 'hall' => 'Зал 1']
-                                                    ]
-                                                ],
-                                                'image 4.png' => [
-                                                    'name' => 'Мег 2: Бездна',
-                                                    'badges' => ['экшн', 'триллер'],
-                                                    'sessions' => [
-                                                        ['time' => '11:00', 'format' => '2D', 'price' => '1300 ₸', 'hall' => 'Зал 2'],
-                                                        ['time' => '15:00', 'format' => '3D', 'price' => '1600 ₸', 'hall' => 'Зал 1'],
-                                                        ['time' => '19:00', 'format' => '2D', 'price' => '1300 ₸', 'hall' => 'Зал 3']
-                                                    ]
-                                                ],
-                                                'image 5.png' => [
-                                                    'name' => 'Заложники',
-                                                    'badges' => ['экшн', 'триллер'],
-                                                    'sessions' => [
-                                                        ['time' => '12:00', 'format' => '2D', 'price' => '1233 ₸', 'hall' => 'Зал 3'],
-                                                        ['time' => '16:00', 'format' => '3D', 'price' => '1533 ₸', 'hall' => 'Зал 2'],
-                                                        ['time' => '20:00', 'format' => '2D', 'price' => '1233 ₸', 'hall' => 'Зал 1']
-                                                    ]
-                                                ],
-                                                'image 6.png' => [
-                                                    'name' => 'Леди Баг и Супер-Кот: Пробуждение силы',
-                                                    'badges' => ['2D', 'Дубляж'],
-                                                    'sessions' => [
-                                                        ['time' => '10:30', 'format' => '2D', 'price' => '1233 ₸', 'hall' => 'Зал 3'],
-                                                        ['time' => '14:30', 'format' => '2D', 'price' => '1233 ₸', 'hall' => 'Зал 1'],
-                                                        ['time' => '18:30', 'format' => '3D', 'price' => '1533 ₸', 'hall' => 'Зал 2']
-                                                    ]
-                                                ],
-                                                 'No images' => [
-                                                    'name' => 'Когда не загрузилась афиша',
-                                                    'badges' => ['комедия'],
-                                                    'sessions' => [
-                                                        ['time' => '15:35', 'format' => '2D', 'price' => '1233 ₸', 'hall' => 'Зал 3']
-                                                    ]
-                                                ],
-                                                'image 7.png' => [
-                                                    'name' => 'Руслан и Людмила. Больше, чем сказка',
-                                                    'badges' => ['анимауионное приключение'],
-                                                    'sessions' => [
-                                                        ['time' => '11:30', 'format' => '2D', 'price' => '1100 ₸', 'hall' => 'Зал 1'],
-                                                        ['time' => '15:30', 'format' => '3D', 'price' => '1400 ₸', 'hall' => 'Зал 3'],
-                                                        ['time' => '19:30', 'format' => '2D', 'price' => '1100 ₸', 'hall' => 'Зал 2']
-                                                    ]
-                                                ]
-                                            ];
-                                            
-                                            foreach ($filmFiles as $file) {
-                                                $filename = basename($file);
-                                                if (isset($filmData[$filename])) {
-                                                    $films[] = array_merge(['image' => $filename], $filmData[$filename]);
-                                                }
-                                            }
-                                            
-                                            // Add the 'No images' entry if it exists in filmData
-                                            if (isset($filmData['No images'])) {
-                                                $films[] = array_merge(['image' => null], $filmData['No images']);
-                                            }
+                                            $existingImages = array_map('basename', $filmFiles);
                                         }
                                     @endphp
                                     
-                                    @foreach($films as $film)
-                                        <div class="movie-card">
-                                            <div class="film-image">
-                                                @if($film['image'])
-                                                    <img src="{{ asset('images/films/' . $film['image']) }}" alt="{{ $film['name'] }}">
-                                                @else
-                                                    <div class="no-image-placeholder">
-                                                        <span>Нет изображения</span>
-                                                    </div>
-                                                @endif
-                                            </div>
-                                            <div class="film-content">
-                                                <h4 class="film-name">{{ $film['name'] }}</h4>
-                                                <div class="film-badges">
-                                                    @foreach($film['badges'] as $badge)
-                                                        <span class="badge">{{ $badge }}</span>
-                                                    @endforeach
+                                    @foreach($filmData as $imageFile => $film)
+                                        @php
+                                            // Check if this film should be displayed (either has existing image or is 'No images')
+                                            $shouldDisplay = ($imageFile === 'No images') || in_array($imageFile, $existingImages);
+                                            $imagePath = ($imageFile === 'No images') ? null : $imageFile;
+                                        @endphp
+                                        
+                                        @if($shouldDisplay)
+                                            <div class="movie-card">
+                                                <div class="film-image">
+                                                    @if($imagePath)
+                                                        <img src="{{ asset('images/films/' . $imagePath) }}" alt="{{ $film['name'] }}">
+                                                    @else
+                                                        <img src="{{ asset('images/films/no-image.png') }}" alt="{{ $film['name'] }}">
+                                                    @endif
                                                 </div>
-                                                <div class="film-data">
-                                                    <div class="film-sessions">
-                                                        @foreach($film['sessions'] as $session)
-                                                            <div class="session-col">
-                                                                <div class="session-col session-time-col">
-                                                                    <span class="session-time">{{ $session['time'] }}</span>
-                                                                    <div class="session-col session-format-price-col">
-                                                                        <span>{{ $session['format'] }}</span>
-                                                                        <span>{{ $session['price'] }}</span>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                                <div class="session-col session-hall-col">
-                                                                    <span >{{ $session['hall'] }}</span>
-                                                                </div>
-                                                            </div>
+                                                <div class="film-content">
+                                                    <h4 class="film-name">{{ $film['name'] }}</h4>
+                                                    <div class="film-badges">
+                                                        @foreach($film['badges'] as $badge)
+                                                            <span class="badge">{{ $badge }}</span>
                                                         @endforeach
                                                     </div>
+                                                    <div class="film-data">
+                                                        <div class="film-sessions">
+                                                            @foreach($film['sessions'] as $session)
+                                                                <div class="session-col">
+                                                                    <div class="session-time-col">
+                                                                        <span class="session-time">{{ $session['time'] }}</span>
+                                                                        <div class="session-col session-format-price-col">
+                                                                            <span>{{ $session['format'] }}</span>
+                                                                            <span>{{ $session['price'] }}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                    <div class="session-hall-col">
+                                                                        <span >{{ $session['hall'] }}</span>
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
@@ -276,19 +270,19 @@
             </section>
             <section>
                 <div class="stripe">
-                    <div class="{{ $rowClass }}">
-                        <div class="{{ $columnThreeClasses[0] }}">
-                            <img class="komek-img"src="{{ asset('images/komek.png') }}" alt="">
+                    <div class="{{ $rowClass }} align-items-center">
+                        <div class="{{ $columnThreeClasses[0] }} d-flex justify-content-center">
+                            <img class="komek-img" src="{{ asset('images/komek.png') }}" alt="">
                         </div>
-                        <div class="{{ $columnThreeClasses[1] }}" >
+                        <div class="{{ $columnThreeClasses[1] }}">
                             <div class="emails">
-                                <h6>admin@example.com </h6>
+                                <h6>admin@example.com</h6>
                                 <h6>ticket@example.com</h6>
                                 <p>улица Тестовая 1</p>
                             </div>
                         </div>
                         <div class="{{ $columnThreeClasses[2] }}">
-                             <select aria-label="Telephone numbers">
+                            <select aria-label="Telephone numbers" class="w-auto mx-auto">
                                 <option value="+77001234567">+7 700 123 45 67</option>
                                 <option value="+77012345678">+7 701 234 56 78</option>
                                 <option value="+77023456789">+7 702 345 67 89</option>
@@ -298,10 +292,10 @@
                                 <option value="+77067890123">+7 706 789 01 23</option>
                                 <option value="+77078901234">+7 707 890 12 34</option>
                             </select>
-                            <p>Касса</p>
+                            <p class="mt-2">Касса</p>
                         </div>
                         <div class="{{ $columnThreeClasses[3] }}">
-                            <div class="schedule">
+                            <div class="schedule text-center">
                                 <h6>08:00 - 22:00 с пн.-пт.</h6>
                                 <p>График работы</p>
                             </div>

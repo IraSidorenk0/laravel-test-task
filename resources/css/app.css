@@ -1,5 +1,9 @@
 @import 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css';
-
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 body {
     margin: 0;
     padding: 0;
@@ -80,12 +84,21 @@ header {
     box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.2);
 }
 
+.stripe select option {
+    background-color: #123D4B;
+    color: #fff;
+    padding: 8px 12px;
+}
+
+.stripe select option:hover {
+    background-color: #1a4f5f;
+}
+
 .stripe .adress h6 {
     color: #fff;
     font-family: 'Roboto', sans-serif;
-    margin-bottom: 8px;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .stripe .adress p {
@@ -93,7 +106,6 @@ header {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     font-size: 14px;
-    padding: 4px 8px;
     border-radius: 4px;
     display: inline-block;
 }
@@ -292,6 +304,7 @@ footer hr {
 .tabs-container {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     padding: 0 20px;
     border-bottom: 1px solid #e0e0e0;
 }
@@ -377,15 +390,14 @@ footer hr {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     margin-top: 20px;
+    padding: 0 20px 50px;
 }
 
 .movie-card {
     text-align: center;
-    padding: 20px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid transparent;
     background: #fff;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .movie-card:hover {
@@ -663,7 +675,6 @@ border-color: #adb5bd;
 .film-data {
     margin-top: auto;
     border-top: 1px solid #f0f0f0;
-    padding-top: 20px;
 }
 
 .film-info {
@@ -689,7 +700,8 @@ border-color: #adb5bd;
     margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    justify-items: start;
+    row-gap: 15px;
 }
 
 .film-sessions strong {
@@ -701,10 +713,11 @@ border-color: #adb5bd;
 }
 
 .session-time {
+    display: flex;
     background: #E92B43;
     color: #fff;
-    padding: 5px 15px;
-    border-radius: 3px;
+    padding: 5px 14px;
+    border-radius: 3px 3px 0 0;
     font-size: 13px;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
@@ -729,12 +742,6 @@ border-color: #adb5bd;
 .session-col {
     display: flex;
     flex-direction: column;
-    margin-bottom: 8px;
-    align-items: flex-start;
-}
-
-.session-col {
-    display: flex;
     align-items: center;
 }
 
@@ -748,17 +755,21 @@ border-color: #adb5bd;
 
 .session-format-price-col {
     display: flex;
-    gap: 6px;
     flex-direction: row;
     font-size: 10px;
-    justify-content: space-around;
+    justify-content: space-between;
     color: #4C4C4F;
+    width: 100%;
+    padding: 4px;
 }
 
 .session-hall-col {
     flex: 0 0 auto;
     min-width: 60px;
     justify-content: flex-end;
+    color: #4C4C4F;
+    font-size: 10px;
+    padding: 2px 0;
 }
 
 .session-hall {
