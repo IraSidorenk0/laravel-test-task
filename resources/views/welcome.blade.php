@@ -40,7 +40,7 @@
                             <p class="mt-2">Касса</p>
                         </div>
                         <div class="{{ $columnClasses[2] }}">
-                            <div class="links h-100 d-flex justify-content-between align-items-center">
+                            <div class="links h-100 d-flex justify-content-between align-items-center flex-wrap">
                                 <div class="d-flex gap-3">
                                     <img src="{{ asset('images/social-links/Facebook.svg') }}" alt="">
                                     <img src="{{ asset('images/social-links/Instagram.svg') }}" alt="">

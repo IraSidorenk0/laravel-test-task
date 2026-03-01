@@ -797,6 +797,12 @@ border-color: #adb5bd;
 }
 
 @media (max-width: 768px) {
+    .tab-buttons {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 99;
+    }
     .movie-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -833,6 +839,8 @@ border-color: #adb5bd;
         padding: 5px 8px;
         margin-right: 6px;
         margin-bottom: 6px;
+        display: flow;
+        width: 100%;
     }
 }
 
