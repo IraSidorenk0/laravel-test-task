@@ -1,6 +1,4 @@
 /node_modules
-/public/hot
-/public/storage
 /storage/*.key
 /vendor
 .env
@@ -91,7 +89,6 @@ build/Release
 
 # Gatsby files
 .cache/
-public
 
 # Storybook build outputs
 .out
